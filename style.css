@@ -1,0 +1,114 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    /* Prevent pull-to-refresh and overscroll effects on mobile */
+    overscroll-behavior-y: contain;
+}
+
+.game-container {
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative; /* Needed for absolute positioning of message */
+    max-width: 95%; /* Ensure it fits well on smaller screens */
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+h1 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.score-container {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+#gameCanvas {
+    border: 2px solid #333;
+    background-color: #eee;
+    display: block; /* Remove extra space below canvas */
+    margin: 0 auto; /* Center canvas */
+    max-width: 100%; /* Ensure canvas scales down if needed */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.message {
+    position: absolute;
+    /* Adjust positioning to be relative to canvas, approx center */
+    top: calc(50% - 50px); /* Adjust vertical position as needed */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 5px;
+    font-size: 1.2em; /* Slightly smaller for mobile potentially */
+    z-index: 10; /* Ensure it's above the canvas */
+    display: block; /* Initially visible */
+    width: 80%; /* Prevent message from being too wide */
+    box-sizing: border-box;
+}
+
+/* --- On-Screen Controls Styling --- */
+.controls-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    grid-template-rows: repeat(2, 1fr);    /* 2 rows */
+    gap: 5px; /* Space between buttons */
+    width: 150px; /* Adjust size as needed */
+    margin: 15px auto 0; /* Center the controls below canvas */
+}
+
+.control-button {
+    padding: 15px;
+    font-size: 1.5em;
+    cursor: pointer;
+    background-color: #ddd;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    user-select: none; /* Prevent text selection on mobile */
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE/Edge */
+    touch-action: manipulation; /* Improve touch responsiveness */
+}
+
+/* Grid positioning for D-pad layout */
+#btnUp { grid-column: 2; grid-row: 1; }
+#btnLeft { grid-column: 1; grid-row: 2; }
+#btnDown { grid-column: 2; grid-row: 2; }
+#btnRight { grid-column: 3; grid-row: 2; }
+
+.control-button:active {
+    background-color: #bbb; /* Feedback on press */
+}
+
+#restartButton {
+    margin-top: 15px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#restartButton:hover {
+    background-color: #45a049;
+}
+
+.hidden {
+    display: none;
+}
