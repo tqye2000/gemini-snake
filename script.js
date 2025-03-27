@@ -1,3 +1,7 @@
+//------------------------------------------------------
+// Snake Game JavaScript Code
+//------------------------------------------------------
+// --- HTML Elements ---
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 const scoreDisplay = document.getElementById('score');
@@ -9,7 +13,6 @@ const btnUp = document.getElementById('btnUp');
 const btnDown = document.getElementById('btnDown');
 const btnLeft = document.getElementById('btnLeft');
 const btnRight = document.getElementById('btnRight');
-
 
 // --- Game Constants ---
 const BOX_SIZE = 20; // Size of each grid square (snake segment, food)
@@ -29,6 +32,9 @@ let gameInterval;
 let isGameOver = false;
 let gameStarted = false;
 let currentSpeed = INITIAL_SPEED;
+
+// --- Audio Elements ---
+const gameOverSound = new Audio('game-over.mp3'); // Add the path to your sound file
 
 // --- Helper Functions ---
 
@@ -159,11 +165,13 @@ function handleDirectionChange(directionCommand) {
     }
 }
 
-
 // Handle game over state
 function gameOver() {
     isGameOver = true;
     clearInterval(gameInterval); // Stop the game loop
+    if (gameOverSound.readyState >= 2) { // Check if the sound file is available
+        gameOverSound.play(); // Play game over sound
+    }
     messageDisplay.textContent = `Game Over! Final Score: ${score}`;
     messageDisplay.classList.remove('hidden');
     restartButton.classList.remove('hidden');
