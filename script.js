@@ -34,7 +34,7 @@ let gameStarted = false;
 let currentSpeed = INITIAL_SPEED;
 
 // --- Audio Elements ---
-const gameOverSound = new Audio('game-over.mp3'); // Add the path to your sound file
+const gameOverSound = new Audio('game_over_sound.mp3'); // Add the path to your sound file
 
 // --- Helper Functions ---
 
